@@ -28,7 +28,7 @@ public class SpringGCPPubSubMessagePublisher {
 	}
 	
 	public Boolean publishMessage(String topicName, String message) {
-		LOGGER.info("SpringGCPPubSubMessagePublisher -> publishMessage() -> Message : {} before gets published in Topic : {}", message, topicName);
+		LOGGER.info("SpringGCPPubSubMessagePublisher -> publishMessage() -> Message - before gets published in Topic : {} is : {}", topicName, message);
 		ListenableFuture<String> future = this.pubSubTemplate.publish(topicName, message);
 		if(null != future) {
 			return Boolean.TRUE;
