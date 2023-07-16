@@ -35,7 +35,7 @@ public class SpringGCPPubSubService {
 	private static final String NOT_APPLICABLE = "NA";
 	private static final String SUCCESS_STATUS = "SUCCESSFUL";
 	private static final String FAILED_STATUS = "FAILED";
-	private static final String DELETED_SUCCESS = "Deleted Successfully";
+	private static final String TOPICS_DELETED_SUCCESS = "Deleted Successfully";
 	
 	private final PubSubAdmin pubSubAdmin;
 	private final PubSubTemplate pubSubTemplate;
@@ -95,14 +95,14 @@ public class SpringGCPPubSubService {
 		String topicName = this.pubSubAdmin.listTopics().get(0).getName();
 		LOGGER.info("SpringGCPPubSubService -> deleteTopic() -> Topic to be deleted: {}", topicName);
 		this.pubSubAdmin.deleteTopic(topicName);
-		return topicName + " " + DELETED_SUCCESS;
+		return topicName + " " + TOPICS_DELETED_SUCCESS;
 	}
 	
 	public String deleteSubscription() {
 		String subscscriptionName = this.pubSubAdmin.listSubscriptions().get(0).getName();
 		LOGGER.info("SpringGCPPubSubService -> deleteSubscription() -> Subscription to be deleted: {}", subscscriptionName);
 		this.pubSubAdmin.deleteSubscription(subscscriptionName);
-		return subscscriptionName + " " + DELETED_SUCCESS;
+		return subscscriptionName + " " + TOPICS_DELETED_SUCCESS;
 	}
 	
 	private TopicMessage createTopicMessage(String topicName, String message) {
