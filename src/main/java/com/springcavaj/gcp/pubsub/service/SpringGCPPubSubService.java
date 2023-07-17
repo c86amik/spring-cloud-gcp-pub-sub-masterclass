@@ -20,6 +20,7 @@ import com.google.cloud.spring.pubsub.core.PubSubTemplate;
 import com.google.cloud.spring.pubsub.support.AcknowledgeablePubsubMessage;
 import com.google.pubsub.v1.Subscription;
 import com.google.pubsub.v1.Topic;
+import com.springcavaj.gcp.pubsub.excpetion.SpringGCPPubSubException;
 import com.springcavaj.gcp.pubsub.model.TopicDetails;
 import com.springcavaj.gcp.pubsub.model.TopicMessage;
 
@@ -87,6 +88,7 @@ public class SpringGCPPubSubService {
 			ackFuture.get();
 		} catch (InterruptedException | ExecutionException e) {
 			LOGGER.error("SpringGCPPubSubService -> pullMessagesFromATopic() -> Exception is : {}", e.getMessage());
+			throw new SpringGCPPubSubException("Not able to Pull Messages from Subscription : " + subscriptionName, e.getMessage());
 		}
 		return messages.stream().map(m -> m.getPubsubMessage().getData().toString()).collect(Collectors.toList());
 	}
