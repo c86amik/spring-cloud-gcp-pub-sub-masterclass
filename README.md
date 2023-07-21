@@ -38,5 +38,5 @@
 </ol>
 
 #### Dummy Post Method RequestBody
-* Body for the <strong>POST</strong> method to publish a message in Google Cloud Pub-sub Topic. For this method the body type is `raw` and then select `Text` from Postman. Provide the message in text format. Like, `"Hi! Welcome to Google Cloud Pub-Sub"`.
+* Body for the <strong>POST</strong> method to publish a message in Google Cloud Pub-sub Topic. For this method, the body type is `raw` then selected `Text` from Postman. Provide the message in text format. Like, `"Hi! Welcome to Google Cloud Pub-Sub"`.
 
